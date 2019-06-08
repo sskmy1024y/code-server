@@ -1,0 +1,10 @@
+version: "3"
+services:
+  code:
+    build: .
+    restart: always
+    ports: 
+      - "8443:8443"
+    command: code-server --no-auth --allow-http
+    volumes:
+      - /Users/sho/sho/Github:/root/project
