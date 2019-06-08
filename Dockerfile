@@ -34,6 +34,7 @@ COPY scripts /usr/local/bin
 COPY extensions.txt /root
 
 # Install vscode extensions
+RUN chmod -R 755 install-extensions.sh
 RUN install-extensions.sh
 
 COPY settings.json /root/.code-server/User/settings.json
