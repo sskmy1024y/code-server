@@ -1,10 +1,14 @@
 version: "3"
 services:
   code:
-    build: .
-    restart: always
-    ports: 
-      - "8443:8443"
-    command: code-server --no-auth --allow-http
+    image: codercom/code-server
+    restart: unless-stopped
+    command: code-server
+    env_file: .env
+    ports:
+      - "8443:8080"
     volumes:
-      - /Users/sho/sho/Github:/root/project
+      - /Users/sho/sho/Develop/Github:/home/coder/project
+      - ./code-server:/home/coder/.local/share/code-server
+      - ~/.gitconfig:/home/coder/.gitconfig:ro
+      - ~/.ssh:/home/coder/.ssh:ro
